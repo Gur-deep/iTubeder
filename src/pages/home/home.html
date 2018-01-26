@@ -1,0 +1,24 @@
+<!-- <ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>iTubeder</ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+<div class="iT_main">
+  <div class="iT_header">
+    <!-- search bar for -->
+    <ion-searchbar class="iT_seachbar_bg" (ionInput)="getSearchData(searchData)" [(ngModel)]="searchData"></ion-searchbar>
+  </div>
+  <div class="iT_body">
+    <ion-scroll style="flex: 1" scrollX="false" scrollY="true">
+      <ion-card>
+        <ion-card-content no-padding>
+          <list [data]="listData"></list>
+        </ion-card-content>
+      </ion-card>
+    </ion-scroll>
+  </div>
+</div>

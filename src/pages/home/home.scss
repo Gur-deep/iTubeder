@@ -1,0 +1,21 @@
+page-home {
+  .iT_main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    .iT_header {
+      flex: 0.05;
+      .iT_seachbar_bg {
+        background: linear-gradient(45deg, color($colors, primary), color($colors, secondary));
+        height: 100%;
+        box-shadow: 0 0 15px -3px black;
+        z-index: 2;
+      }
+    }
+    .iT_body {
+      display: flex;
+      flex: 0.95;
+    }
+  }
+}

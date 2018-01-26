@@ -1,0 +1,9 @@
+<ion-list *ngFor="let list of data"> 
+  <ion-item>
+    <ion-avatar item-start>
+      <img src="{{list.snippet.thumbnails.default.url}}">
+    </ion-avatar>
+    <h2>{{list.snippet.title}}</h2>
+    <p>{{list.snippet.channelTitle}}</p>
+  </ion-item>
+</ion-list>
