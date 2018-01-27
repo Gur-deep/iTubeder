@@ -8,24 +8,27 @@ import { HomePage } from '../pages/home/home';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SearchDataProvider } from '../providers/search-data/search-data';
-import { HttpModule } from '@angular/http';
+import { JsonpModule } from '@angular/http';
 import { ListComponent } from '../components/list/list';
+import { SearchResultsPage } from '../pages/search-results/search-results';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListComponent
+    ListComponent,
+    SearchResultsPage
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    JsonpModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    SearchResultsPage
   ],
   providers: [
     StatusBar,

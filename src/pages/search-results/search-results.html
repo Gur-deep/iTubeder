@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-capitalize>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-list>
+    <ion-item *ngFor="let list of search.result">
+      <ion-thumbnail item-start>
+        <img src="{{list.snippet.thumbnails.default.url}}">
+      </ion-thumbnail>
+      <h2>{{list.snippet.title}}</h2>
+      <p>{{list.snippet.channelTitle}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
