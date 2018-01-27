@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { SearchDataProvider } from '../../providers/search-data/search-data';
 import { SearchResultsPage } from '../search-results/search-results';
