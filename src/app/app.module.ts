@@ -9,14 +9,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SearchDataProvider } from '../providers/search-data/search-data';
 import { JsonpModule } from '@angular/http';
-import { ListComponent } from '../components/list/list';
 import { SearchResultsPage } from '../pages/search-results/search-results';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListComponent,
     SearchResultsPage
   ],
   imports: [

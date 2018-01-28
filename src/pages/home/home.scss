@@ -7,9 +7,9 @@ page-home {
     .iT_header {
       flex: 0.05;
       .iT_seachbar_bg {
-        background: linear-gradient(45deg, color($colors, primary), color($colors, secondary));
+        background: linear-gradient(75deg, color($colors, primary), color($colors, secondary));
         height: 100%;
-        box-shadow: 0 0 15px -3px black;
+        box-shadow: 0 0 15px -2px black;
         z-index: 2;
       }
     }
