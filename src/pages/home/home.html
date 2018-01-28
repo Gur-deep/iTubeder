@@ -11,12 +11,44 @@
       <ion-searchbar class="iT_seachbar_bg" (ionInput)="getSearchSuggestions(searchData)" [(ngModel)]="searchData"></ion-searchbar>
     </div>
     <div class="iT_body">
+      <div class="iT_search_suggestions_container" *ngIf="searchData" (click)="searchData = ''">
+        <div class="iT_search_suggestions_main">
+          <ion-list no-margin>
+            <button ion-item *ngFor="let list of search.suggestions" (click)="getVideos(list)">
+              {{list}}
+            </button>
+          </ion-list>
+        </div>
+      </div>
       <ion-scroll style="flex: 1" scrollX="false" scrollY="true">
-        <ion-list>
-          <button ion-item *ngFor="let list of search.suggestions" (click)="getVideos(list)">
-            {{list}}
-          </button>
-        </ion-list>
+        <ion-grid>
+          <!-- loading -->
+          <ion-row *ngIf="!loaded">
+            <ion-col text-center>
+              <h1 class="iT_pm_font">
+                Please wait while we are getting videos for you!
+              </h1>
+              <ion-spinner name="ios"></ion-spinner>
+            </ion-col>
+          </ion-row>
+          <!-- main content -->
+          <ion-row *ngIf="loaded">
+            <ion-col *ngFor="let item of search.trands">
+              <ion-card>
+                <img src="{{item.snippet.thumbnails.high.url}}" />
+                <ion-card-content no-padding>
+                  <ion-item>
+                    <ion-avatar item-start>
+                      <img src="{{item.snippet.thumbnails.default.url}}" />
+                    </ion-avatar>
+                    <h3 style="white-space: normal;">{{item.snippet.title}}</h3>
+                    <p>{{item.snippet.channelTitle}} - {{item.statistics.viewCount | number}} Views</p>
+                  </ion-item>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-scroll>
     </div>
   </div>

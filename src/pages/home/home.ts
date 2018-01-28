@@ -9,6 +9,10 @@ import { SearchResultsPage } from '../search-results/search-results';
 })
 export class HomePage {
   constructor(public navCtrl: NavController, public search: SearchDataProvider) { }
+  loaded: boolean = false;
+  ionViewDidLoad() {
+    this.getTranding();
+  }
 
   getSearchSuggestions(q) {
     this.search.suggestions = [];
@@ -28,5 +32,16 @@ export class HomePage {
         this.search.result = snap.json().items;
       })
     }
+  }
+
+  getTranding() {
+    this.search.trands = [];
+    this.search.getTrands().subscribe(snap => {
+      for (let key in snap.json().items) {
+        this.search.getSingleVideo(snap.json().items[key].id); //getting single video and then adding into list
+      }
+      console.log(this.search.trands);
+      this.loaded = true;
+    })
   }
 }
