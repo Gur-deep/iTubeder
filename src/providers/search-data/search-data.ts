@@ -22,6 +22,7 @@ export class SearchDataProvider {
     var url = `https://www.googleapis.com/youtube/v3/videos?part=contentDetails&chart=mostPopular&regionCode=IN&maxResults=50&key=${this.key}&callback=JSONP_CALLBACK`;
     return this.jsonp.request(url);
   }
+  
   getSingleVideo(id) {
     var url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${id}&key=${this.key}&callback=JSONP_CALLBACK`;
     this.jsonp.request(url).subscribe(snap => {

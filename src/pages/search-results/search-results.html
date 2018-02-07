@@ -6,7 +6,7 @@
 
 <ion-content no-padding>
   <ion-list>
-    <ion-item *ngFor="let list of search.result">
+    <ion-item *ngFor="let list of search.result" (click)="preview(list)">
       <ion-thumbnail item-start>
         <img src="{{list.snippet.thumbnails.default.url}}">
       </ion-thumbnail>

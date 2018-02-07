@@ -10,12 +10,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { SearchDataProvider } from '../providers/search-data/search-data';
 import { JsonpModule } from '@angular/http';
 import { SearchResultsPage } from '../pages/search-results/search-results';
+import { PreviewPage } from '../pages/preview/preview';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    SearchResultsPage
+    SearchResultsPage,
+    PreviewPage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,8 @@ import { SearchResultsPage } from '../pages/search-results/search-results';
   entryComponents: [
     MyApp,
     HomePage,
-    SearchResultsPage
+    SearchResultsPage,
+    PreviewPage
   ],
   providers: [
     StatusBar,

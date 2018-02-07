@@ -1,12 +1,9 @@
-<!-- <toolbar></toolbar> -->
-<ion-header>
-  <ion-navbar>
-    <ion-title>iTubeder</ion-title>
-  </ion-navbar>
-</ion-header>
 <ion-content>
   <div class="iT_main">
     <div class="iT_header">
+      <div class="iT_header_txt">
+          iTubeder
+      </div>
       <!-- search bar for -->
       <ion-searchbar class="iT_seachbar_bg" (ionInput)="getSearchSuggestions(searchData)" [(ngModel)]="searchData"></ion-searchbar>
     </div>
@@ -34,7 +31,7 @@
           <!-- main content -->
           <ion-row *ngIf="loaded">
             <ion-col *ngFor="let item of search.trands">
-              <ion-card>
+              <ion-card (click)="preview(item)">
                 <img src="{{item.snippet.thumbnails.high.url}}" />
                 <ion-card-content no-padding>
                   <ion-item>

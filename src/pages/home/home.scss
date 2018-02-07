@@ -6,11 +6,18 @@ page-home {
     background-color: #fff;
     .iT_header {
       flex: 0.05;
+      background: linear-gradient(75deg, color($colors, primary), color($colors, secondary)); // padding-top: 35px;
+      .iT_header_txt {
+        color: #fff;
+        font-weight: 300;
+        font-size: 6vw;
+        padding: 2vw;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+      }
       .iT_seachbar_bg {
-        background: linear-gradient(75deg, color($colors, primary), color($colors, secondary));
-        height: 100%;
-        box-shadow: 0 0 15px -2px black;
-        z-index: 2;
+        background: transparent;
       }
     }
     .iT_body {

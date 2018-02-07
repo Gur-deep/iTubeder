@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, NavController } from 'ionic-angular';
 import { SearchDataProvider } from '../../providers/search-data/search-data';
+import { PreviewPage } from '../preview/preview';
 
 @Component({
   selector: 'page-search-results',
@@ -8,12 +9,17 @@ import { SearchDataProvider } from '../../providers/search-data/search-data';
 })
 export class SearchResultsPage {
   title: any;
-  constructor(public navParams: NavParams, public search: SearchDataProvider) {
+  constructor(public navParams: NavParams, public search: SearchDataProvider, public navCtrl: NavController) {
 
   }
   ionViewDidLoad() {
     if (this.navParams.get('title') != undefined) {
       this.title = this.navParams.get('title');
     }
+  }
+
+  preview(data) {
+    console.log(data);
+    this.navCtrl.push(PreviewPage, { 'data': data , 'id' : data.id.videoId});
   }
 }
