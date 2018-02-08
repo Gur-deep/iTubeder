@@ -1,6 +1,8 @@
 {
   "name": "itubeder",
-  "app_id": "35f2b851",
+  "app_id": "c447e5a7",
   "type": "ionic-angular",
-  "integrations": {}
+  "integrations": {
+    "cordova": {}
+  }
 }

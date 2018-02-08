@@ -20,6 +20,7 @@ export class SearchResultsPage {
 
   preview(data) {
     console.log(data);
-    this.navCtrl.push(PreviewPage, { 'data': data , 'id' : data.id.videoId});
+    this.navCtrl.push(PreviewPage, { 'data': data, 'id': data.id.videoId });
   }
+
 }

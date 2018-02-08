@@ -37,3 +37,8 @@ ion-header {
   font-weight: 300;
   color: color($colors, primary);
 }
+
+.iT_btn {
+  background: linear-gradient(45deg, color($colors, primary), color($colors, secondary));
+  color: #fff;
+}

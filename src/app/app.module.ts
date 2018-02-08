@@ -11,6 +11,7 @@ import { SearchDataProvider } from '../providers/search-data/search-data';
 import { JsonpModule } from '@angular/http';
 import { SearchResultsPage } from '../pages/search-results/search-results';
 import { PreviewPage } from '../pages/preview/preview';
+import { PhotoLibrary } from '@ionic-native/photo-library';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PreviewPage } from '../pages/preview/preview';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    SearchDataProvider
+    SearchDataProvider,
+    PhotoLibrary
   ]
 })
 export class AppModule { }
