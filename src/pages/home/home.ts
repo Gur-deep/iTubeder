@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { SearchDataProvider } from '../../providers/search-data/search-data';
 import { SearchResultsPage } from '../search-results/search-results';
@@ -10,7 +10,11 @@ import { PreviewPage } from '../preview/preview';
 })
 export class HomePage {
   constructor(public navCtrl: NavController, public search: SearchDataProvider) { }
+  @ViewChild('scroll') scroll;
   loaded: boolean = false;
+  searchData: string = "";
+  position = 0;
+  showSearch = true;
   ionViewDidLoad() {
     this.getTranding();
   }
@@ -49,4 +53,13 @@ export class HomePage {
     this.navCtrl.push(PreviewPage, { 'data': data, 'id': data.id });
   }
 
+  scrolling() {
+    let scroll = this.scroll.nativeElement.scrollTop;
+    if (this.position > scroll) {
+      this.showSearch = true;
+    } else {
+      this.showSearch = false;
+    }
+    this.position = scroll;
+  }
 }

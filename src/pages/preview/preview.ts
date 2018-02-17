@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PhotoLibrary } from '@ionic-native/photo-library';
+import { TouchID } from '@ionic-native/touch-id';
 
 @Component({
   selector: 'page-preview',
@@ -12,10 +13,25 @@ export class PreviewPage {
   id: any;
   imageList: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public sanitizer: DomSanitizer
-    , public photoLibrary: PhotoLibrary, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public sanitizer: DomSanitizer,
+    private photoLibrary: PhotoLibrary, public alertCtrl: AlertController, private touchId: TouchID) {
+
     this.data = navParams.get('data');
     this.id = navParams.get('id');
+
+    this.photoLibrary.requestAuthorization({ read: true }).then(() => {
+      this.alertCtrl.create({
+        title: 'Done!',
+        subTitle: 'Done Getting Photos',
+        buttons: ['OK']
+      }).present();
+    }).catch(err =>
+      this.alertCtrl.create({
+        title: 'Catch!',
+        subTitle: `${err}`,
+        buttons: ['OK']
+      }).present()
+    );
 
   }
 
@@ -29,54 +45,41 @@ export class PreviewPage {
 
   saveVideoToPhotos() {
     // let url = `https://www.youtube.com/embed/${this.id}`;
-    this.photoLibrary.requestAuthorization().then(() => {
-      this.photoLibrary.saveImage(this.data.snippet.thumbnails.default.url + '&ext=.jpg', 'iTubeder').then((entry => {
-        let alert = this.alertCtrl.create({
-          title: 'Success!',
-          subTitle: `${entry}`,
-          buttons: ['OK']
-        });
-        alert.present();
-      }), (err) => {
+    this.photoLibrary.requestAuthorization({ read: true, write: true }).then(res => {
+      this.alertCtrl.create({
+        title: 'success!',
+        subTitle: `${res}`,
+        buttons: ['OK']
+      }).present();
+    },
+      err => {
         this.alertCtrl.create({
-          title: 'Response!',
-          subTitle: 'permissions weren\'t granted -- catch',
+          title: 'failed!',
+          subTitle: `${err}`,
           buttons: ['OK']
         }).present();
-      }).catch(err => {
-        let alert = this.alertCtrl.create({
-          title: 'Error!',
-          subTitle: `${err}`,
-          buttons: ['OK']
-        });
-        alert.present();
-      }).catch(err => {
-        let alert = this.alertCtrl.create({
-          title: 'Permissions weren\'t granted!',
-          subTitle: `${err}`,
-          buttons: ['OK']
-        });
-        alert.present();
-      });;
-    });
+      });
   }
 
   getImages() {
-    this.photoLibrary.requestAuthorization().then(() => {
-      this.photoLibrary.getLibrary().subscribe({
-        next: library => {
-          this.imageList = library;
-        },
-        error: err => { console.log('could not get photos'); },
-        complete: () => { console.log('done getting photos'); }
-      });
-    }).catch(err => {
-      let alert = this.alertCtrl.create({
-        title: 'Permissions weren\'t granted!',
-        subTitle: `${err}`,
+
+  }
+
+  showTouchId() {
+    this.touchId.verifyFingerprint('Scan your fingerprint please').then(res => {
+      this.alertCtrl.create({
+        title: 'success!',
+        subTitle: `${res}`,
         buttons: ['OK']
-      });
-      alert.present();
-    });
+      }).present();
+    },
+      err => {
+        this.alertCtrl.create({
+          title: 'failed!',
+          subTitle: `${err}`,
+          buttons: ['OK']
+        }).present();
+      }
+    );
   }
 }

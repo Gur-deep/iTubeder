@@ -2,22 +2,28 @@
   <div class="iT_main">
     <div class="iT_header">
       <div class="iT_header_txt">
-          iTubeder
+        <h1 no-margin>iTubeder</h1>
       </div>
       <!-- search bar for -->
-      <ion-searchbar class="iT_seachbar_bg" (ionInput)="getSearchSuggestions(searchData)" [(ngModel)]="searchData"></ion-searchbar>
+      <div class="iT_seachbar" [ngClass]="{'iT_showSearch': showSearch == false}">
+        <form (ngSubmit)="getVideos(searchData)">
+          <input type="search" name="search" autocomplete="off" placeholder="Search" (ngModelChange)="getSearchSuggestions(searchData)"
+            [(ngModel)]="searchData" />
+          <ion-icon name="close-circle" md="md-close-circle" *ngIf="searchData" (click)="searchData= ''" tappable></ion-icon>
+        </form>
+      </div>
     </div>
     <div class="iT_body">
       <div class="iT_search_suggestions_container" *ngIf="searchData" (click)="searchData = ''">
         <div class="iT_search_suggestions_main">
           <ion-list no-margin>
-            <button ion-item *ngFor="let list of search.suggestions" (click)="getVideos(list)">
+            <button ion-item *ngFor="let list of search.suggestions" (click)="getVideos(list)" tappable>
               {{list}}
             </button>
           </ion-list>
         </div>
       </div>
-      <ion-scroll style="flex: 1" scrollX="false" scrollY="true">
+      <div #scroll style="flex: 1; overflow-y: scroll" (scroll)="scrolling()">
         <ion-grid>
           <!-- loading -->
           <ion-row *ngIf="!loaded">
@@ -30,8 +36,8 @@
           </ion-row>
           <!-- main content -->
           <ion-row *ngIf="loaded">
-            <ion-col *ngFor="let item of search.trands">
-              <ion-card (click)="preview(item)">
+            <ion-col *ngFor="let item of search.trands" col-12>
+              <ion-card (click)="preview(item)" tappable>
                 <img src="{{item.snippet.thumbnails.high.url}}" />
                 <ion-card-content no-padding>
                   <ion-item>
@@ -46,7 +52,7 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-      </ion-scroll>
+      </div>
     </div>
   </div>
 </ion-content>

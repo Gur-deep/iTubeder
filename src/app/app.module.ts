@@ -12,6 +12,7 @@ import { JsonpModule } from '@angular/http';
 import { SearchResultsPage } from '../pages/search-results/search-results';
 import { PreviewPage } from '../pages/preview/preview';
 import { PhotoLibrary } from '@ionic-native/photo-library';
+import { TouchID } from '@ionic-native/touch-id';
 
 @NgModule({
   declarations: [
@@ -33,11 +34,12 @@ import { PhotoLibrary } from '@ionic-native/photo-library';
     PreviewPage
   ],
   providers: [
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
-    SearchDataProvider,
-    PhotoLibrary
+    PhotoLibrary,
+    TouchID,
+    SearchDataProvider
   ]
 })
 export class AppModule { }

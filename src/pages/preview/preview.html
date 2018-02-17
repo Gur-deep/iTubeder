@@ -26,15 +26,11 @@
         <b>Note:</b> Save this video to your photo library.
       </p>
       <h1 color="primary">Enjoy!</h1>
-      <button ion-button class="iT_btn" (click)="saveVideoToPhotos()" round>Save Now
+      <!-- <button ion-button class="iT_btn" (click)="saveVideoToPhotos()" round>Save Now
         <ion-icon name="cloud-download" ios="ios-cloud-download-outline" margin-left></ion-icon>
-      </button>
+      </button> -->
+      <button ion-button class="iT_btn" (click)="getImages()" round>Get images</button>
+      <button ion-button class="iT_btn" (click)="showTouchId()" round>TouchId</button>
     </ion-card-content>
   </ion-card>
-
-  <button ion-button class="iT_btn" (click)="getImages()" round>Get images</button>
-  <div *ngFor="let item of imageList">
-    <span>{{item}}</span>
-  </div>
-  {{imageList | json}}
 </ion-content>
