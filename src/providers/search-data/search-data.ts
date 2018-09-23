@@ -15,7 +15,7 @@ export class SearchDataProvider {
   }
 
   getSuggestions(q) {
-    var url = `http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${q}&callback=JSONP_CALLBACK`;
+    var url = `https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${q}&callback=JSONP_CALLBACK`;
     return this.jsonp.request(url);
   }
 
