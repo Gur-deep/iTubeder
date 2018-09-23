@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavParams, NavController } from 'ionic-angular';
-import { SearchDataProvider } from '../../providers/search-data/search-data';
 import { PreviewPage } from '../preview/preview';
+import { SearchDataProvider } from '../../providers/search-data/search-data';
 
 @Component({
   selector: 'page-search-results',

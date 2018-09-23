@@ -5,32 +5,39 @@
 </ion-header>
 
 <ion-content no-padding>
-  <ion-card>
-    <iframe [src]="_URL()" width="100%" height="250"></iframe>
-    <ion-card-content no-padding>
-      <ion-item>
-        <ion-avatar item-start>
-          <img src="{{data.snippet.thumbnails.default.url}}" />
-        </ion-avatar>
-        <h3 style="white-space: normal;">{{data.snippet.title}}</h3>
-        <p>{{data.snippet.channelTitle}}</p>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
-  <ion-card margin-top>
-    <ion-card-content text-center>
-      <ion-card-title>
-        <strong>{{data.snippet.title}}</strong>
-      </ion-card-title>
-      <p text-capitalize>
-        <b>Note:</b> Save this video to your photo library.
-      </p>
-      <h1 color="primary">Enjoy!</h1>
-      <!-- <button ion-button class="iT_btn" (click)="saveVideoToPhotos()" round>Save Now
-        <ion-icon name="cloud-download" ios="ios-cloud-download-outline" margin-left></ion-icon>
-      </button> -->
-      <button ion-button class="iT_btn" (click)="getImages()" round>Get images</button>
-      <button ion-button class="iT_btn" (click)="showTouchId()" round>TouchId</button>
-    </ion-card-content>
-  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-stretch col-lg-3 col-md-4 col-sm-6 col-xs-12 padding>
+        <ion-card style="height: 100%;width: 100%;" no-margin>
+          <!-- <iframe [src]="_URL()" width="100%" height="250"></iframe> -->
+          <img [src]="data.snippet.thumbnails.default.url" alt="" (click)="openVideo()">
+          <ion-card-content no-padding>
+            <ion-item>
+              <ion-avatar item-start>
+                <img src="{{data.snippet.thumbnails.default.url}}" />
+              </ion-avatar>
+              <h3 style="white-space: normal;">{{data.snippet.title}}</h3>
+              <p>{{data.snippet.channelTitle}}</p>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col align-self-stretch padding>
+        <ion-card style="height: 100%;width: 100%;" no-margin padding>
+          <ion-card-content text-center>
+            <ion-card-title>
+              <strong>{{data.snippet.title}}</strong>
+            </ion-card-title>
+            <p text-capitalize>
+              <b>Note:</b> Save this video to your photo library.
+            </p>
+            <h1 color="primary">Enjoy!</h1>
+            <!-- <button ion-button class="iT_btn" (click)="saveVideoToPhotos()" round>Save Now
+              <ion-icon name="cloud-download" ios="ios-cloud-download-outline" margin-left></ion-icon>
+            </button> -->
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -1,20 +1,19 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { SearchDataProvider } from '../../providers/search-data/search-data';
 import { SearchResultsPage } from '../search-results/search-results';
 import { PreviewPage } from '../preview/preview';
+import { SearchDataProvider } from '../../providers/search-data/search-data';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  constructor(public navCtrl: NavController, public search: SearchDataProvider) { }
+  constructor(private navCtrl: NavController, private search: SearchDataProvider) { }
   @ViewChild('scroll') scroll;
   loaded: boolean = false;
   searchData: string = "";
   position = 0;
-  showSearch = true;
   ionViewDidLoad() {
     this.getTranding();
   }
@@ -51,15 +50,5 @@ export class HomePage {
 
   preview(data) {
     this.navCtrl.push(PreviewPage, { 'data': data, 'id': data.id });
-  }
-
-  scrolling() {
-    let scroll = this.scroll.nativeElement.scrollTop;
-    if (this.position > scroll) {
-      this.showSearch = true;
-    } else {
-      this.showSearch = false;
-    }
-    this.position = scroll;
   }
 }

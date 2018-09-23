@@ -4,40 +4,50 @@ page-home {
     display: flex;
     flex-direction: column;
     background-color: #fff;
+
     .iT_header {
+      position: relative;
       flex: 0.05;
       box-shadow: 1px 1px 15px -3px black;
       z-index: 9;
+
       .iT_header_txt {
         color: #fff;
-        font-weight: 300;
-        padding: 2vw;
+        padding: 1rem;
         display: flex;
         justify-content: center;
-        align-content: center;
-        height: 10vw;
+        align-items: center;
         background: linear-gradient(75deg, color($colors, primary), color($colors, secondary)); // padding-top: 35px;
+
+        h1 {
+          font-weight: bold;
+          font-size: 2.5rem;
+        }
       }
+
       .iT_seachbar {
-        position: absolute;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         width: 100%;
-        padding: 2vw;
-        visibility: visible;
-        z-index: -1;
+        padding: 1rem;
         background: linear-gradient(75deg, color($colors, primary), color($colors, secondary)); // padding-top: 35px;
-        transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+
         form {
           input {
             background: white;
             border: transparent;
-            padding: 8px 36px 8px 36px;
-            font-size: 18px;
+            padding: 1rem 3.5rem;
+            font-size: 1.6rem;
             width: 100%;
-            border-radius: 5px;
+            border-radius: 0.75rem;
+
             &::placeholder {
               color: #9e9e9e;
             }
           }
+
           ion-icon {
             position: absolute;
             color: rgba(0, 0, 0, 0.5);
@@ -46,36 +56,25 @@ page-home {
             right: 20px;
           }
         }
+
         &::before {
           content: "\f4a5";
           position: absolute;
           color: #9e9e9e;
           font-weight: bold;
-          font-size: 24px;
-          top: 16px;
-          left: 20px;
-          display: inline-block;
+          font-size: 2.5rem;
+          left: 2rem;
           font-family: "Ionicons";
-          speak: none;
-          font-style: normal;
-          font-weight: normal;
-          font-variant: normal;
-          text-transform: none;
-          text-rendering: auto;
-          line-height: 1;
-          z-index: 1;
-          -webkit-font-smoothing: antialiased;
         }
       }
-      .iT_showSearch {
-        transform: translateY(-13vw);
-      }
     }
+
     .iT_body {
       position: relative;
       display: flex;
       flex-direction: column;
       flex: 0.95;
+
       .iT_search_suggestions_container {
         background: rgba(0, 0, 0, 0.75);
         position: absolute;
@@ -84,6 +83,7 @@ page-home {
         height: 100%;
         width: 100%;
         z-index: 9;
+
         .iT_search_suggestions_main {
           overflow: scroll;
           transition: max-height 0.5s ease-in-out;
@@ -94,11 +94,4 @@ page-home {
       }
     }
   }
-}
-
-@keyframes scroll-hide {
-  0% {
-    transform: translateY(0)
-  }
-  100% {}
 }
