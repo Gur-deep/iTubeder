@@ -30,6 +30,7 @@ plugins/android.json
 plugins/ios.json
 www/
 src/model/config.ts
+public/
 $RECYCLE.BIN/
 
 .DS_Store
